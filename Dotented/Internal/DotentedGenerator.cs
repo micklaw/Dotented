@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Dotented.Interfaces;
 using Razor.Templating.Core;
@@ -9,6 +13,7 @@ namespace Dotented.Internal
         private readonly DotentedContentFactory client;
         private readonly DotentedBuilder builder;
         private readonly DotentedSettings settings;
+        private readonly string filename = "index.html";
 
         public DotentedGenerator(DotentedContentFactory client, DotentedBuilder builder, DotentedSettings settings)
         {
@@ -40,6 +45,25 @@ namespace Dotented.Internal
            var renderer = RazorViewToStringRendererFactory.CreateRenderer();
 
            var html = await renderer.RenderViewToStringAsync($"~/Views/{options.View}.cshtml", content);
+
+           if (string.IsNullOrWhiteSpace(html))
+           {
+               return;
+           }
+
+           if (options.SingleOnly)
+           {
+               var path = GetPath();
+               await File.WriteAllTextAsync(Path.Combine(path, filename), html, Encoding.UTF8);
+           }
+        }
+
+        private string GetPath()
+        {
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+            return Path.Combine(path, settings.OutputFolder);
         }
     }
 }

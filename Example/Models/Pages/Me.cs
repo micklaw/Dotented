@@ -1,4 +1,5 @@
 using System;
+using Contentful.Core.Models;
 using Dotented;
 using Dotented.Interfaces;
 using MySite.Components;
@@ -13,7 +14,10 @@ namespace MySite.Pages
                     items {
                         type: __typename
                         aboutTitle
+                        aboutLead
+                        aboutBody
                         bioTitle
+                        bioBody
                         codedLead
                         codedTitle
                         companyName
@@ -31,12 +35,6 @@ namespace MySite.Pages
                         startYear
                         metaTitle
                         metaDescription
-                        bio {
-                            json
-                        }
-                        about {
-                            json
-                        }
                         tools
                         companies: codedCompaniesCollection {
                             items {
@@ -46,6 +44,7 @@ namespace MySite.Pages
                             }
                         }
                         profileImage {
+                            type: __typename
                             title
                             url
                         }
@@ -56,6 +55,7 @@ namespace MySite.Pages
                                 company
                                 quote
                                 image {
+                                    type: __typename
                                     title
                                     url
                                 }
@@ -75,6 +75,56 @@ namespace MySite.Pages
         ";
 
         public string AboutTitle { get; set; }
+
+        public string AboutLead { get; set; }
+
+        public string AboutBody { get; set; }
+
+        public string BioTitle { get; set; }
+
+        public string BioBody { get; set; }
+
+        public string CodedLead { get; set; }
+
+        public string CodedTitle { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string ContactLead { get; set; }
+
+        public string ContactTitle { get; set; }
+
+        public string Email { get; set; }
+
+        public string GithubUrl { get; set; }
+
+        public string LinkedinUrl { get; set; }
+
+        public string Name { get; set; }
+
+        public string SkillsTitle { get; set; }
+
+        public string TestimonialTitle { get; set; }
+
+        public string ToolsLead{ get; set; }
+
+        public string ToolsTitle { get; set; }
+
+        public string TwitterUrl { get; set; }
+
+        public string StartYear { get; set; }
+
+        public string MetaTitle { get; set; }
+
+        public string MetaDescription { get; set; }
+
+        public string[] Tools { get; set; }
+
+        public Components.Asset ProfileImage { get; set; }
+
+        public DotentedCollection<Components.Asset> Companies { get; set; }
+
+        public DotentedCollection<Testimonial> Testimonials { get; set; }
 
         public DotentedCollection<Skills> Skills { get; set; }
     }

@@ -25,11 +25,11 @@ namespace Dotented.Internal
             JObject jo = JObject.Load(reader);
 
             // Using a nullable bool here in case "is_album" is not present on an item
-            var itemType = jo["type"].Value<string>();
+            var itemType = jo["type"]?.Value<string>();
 
             DotentedContent item = null;
 
-            if (typeCache.ContainsKey(itemType?.ToLower()))
+            if (itemType != null && typeCache.ContainsKey(itemType.ToLower()))
             {
                 var type = typeCache[itemType.ToLower()];
                 item = Activator.CreateInstance(type) as DotentedContent;
