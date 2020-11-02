@@ -1,0 +1,23 @@
+name: Build Dotented
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup dotnet core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install Packages
+      run: dotnet restore
+    - name: Build dotnet core app
+      run: dotnet build --configuration Release --no-restore
