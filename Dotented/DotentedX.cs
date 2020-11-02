@@ -23,7 +23,8 @@ namespace Dotented
             
             IConfiguration configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("local.settings.json", optional: true)
+                .AddJsonFile("local.settings.json", optional: false)
+                .AddJsonFile("local.settings.dev.json", optional: true)
                 .AddEnvironmentVariables()
                 .Build();
 
