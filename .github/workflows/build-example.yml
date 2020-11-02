@@ -22,6 +22,15 @@ jobs:
         node-version: 12
     - run: npm ci
     - run: npm run build
+    - name: Substitute String
+      uses: bluwy/substitute-string-action@v1
+      with:
+        _input-file: 'Example/local.settings.json'
+        _format-key: '%%key%%'
+        CONTENTFUL_API: ${{ secrets.CONTENTFUL_API }}
+        SPACEID: ${{ secrets.SPACEID }}
+        ENVIRONMENTID: ${{ secrets.ENVIRONMENTID }}
+        APIKEY: ${{ secrets.APIKEY }}
     - name: Setup dotnet core
       uses: actions/setup-dotnet@v1
       with:
