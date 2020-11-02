@@ -39,3 +39,4 @@ jobs:
       run: dotnet restore
     - name: Build dotnet core app
       run: dotnet build --configuration Release --no-restore
+      run: dotnet run
