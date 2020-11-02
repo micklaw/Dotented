@@ -40,4 +40,5 @@ jobs:
     - name: Build dotnet core app
       run: dotnet build --configuration Release --no-restore
     - name: Run dotnet core app
+      working-directory: Example
       run: dotnet run
