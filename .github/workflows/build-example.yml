@@ -27,7 +27,7 @@ jobs:
       with:
         _input-file: 'Example/local.settings.json'
         _format-key: '%%key%%'
-        CONTENTFUL_API: ${{ secrets.CONTENTFUL_API }}
+        CONTENTFUL_API: ${{ secrets.CONTENTFULURL }}
         SPACEID: ${{ secrets.SPACEID }}
         ENVIRONMENTID: ${{ secrets.ENVIRONMENTID }}
         APIKEY: ${{ secrets.APIKEY }}

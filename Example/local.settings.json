@@ -1,6 +1,6 @@
 {
   "Dotented": {
-    "BaseUri": "%%CONTENTFUL_URL%%",
+    "BaseUri": "%%CONTENTFULURL%%",
     "SpaceId": "%%SPACEID%%",
     "EnvironmentId": "%%ENVIRONMENTID%%",
     "ApiKey": "%%APIKEY%%",
