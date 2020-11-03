@@ -25,10 +25,9 @@ jobs:
     - run: npm run build
     - name: Substitute String
       uses: bluwy/substitute-string-action@v1
-      working-directory: Example
       with:
-        _input-file: 'local.settings.json'
-        _output-file: 'local.settings.json'
+        _input-file: 'Example/local.settings.json'
+        _output-file: 'Example/local.settings.json'
         _format-key: '%%key%%'
         CONTENTFULURL: ${{ secrets.CONTENTFULURL }}
         SPACEID: ${{ secrets.SPACEID }}
