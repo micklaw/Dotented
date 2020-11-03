@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -24,8 +25,10 @@ jobs:
     - run: npm run build
     - name: Substitute String
       uses: bluwy/substitute-string-action@v1
+      working-directory: Example
       with:
-        _input-file: 'Example/local.settings.json'
+        _input-file: 'local.settings.json'
+        _output-file: 'local.settings.json'
         _format-key: '%%key%%'
         CONTENTFULURL: ${{ secrets.CONTENTFULURL }}
         SPACEID: ${{ secrets.SPACEID }}
@@ -34,8 +37,9 @@ jobs:
     - name: Read local.settings.json
       id: package
       uses: juliangruber/read-file-action@v1
+      working-directory: Example
       with:
-        path: ./Example/local.settings.json
+        path: local.settings.json
     - name: Echo local.settings.json
       run: echo ${{ steps.package.outputs.content }}
     - name: Setup dotnet core
