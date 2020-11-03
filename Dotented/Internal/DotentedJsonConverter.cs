@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Dotented.Internal
 {
-    public class DotentedJsonConverter : JsonConverter
+    internal class DotentedJsonConverter : JsonConverter
     {
         private readonly IDictionary<string, Type> typeCache;
 
@@ -25,7 +25,7 @@ namespace Dotented.Internal
             JObject jo = JObject.Load(reader);
 
             // Using a nullable bool here in case "is_album" is not present on an item
-            var itemType = jo["type"]?.Value<string>();
+            var itemType = jo["__typename"]?.Value<string>();
 
             DotentedContent item = null;
 

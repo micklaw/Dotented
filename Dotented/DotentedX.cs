@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using Dotented.Interfaces;
 using Dotented.Internal;
+using Markdig;
+using Microsoft.AspNetCore.Html;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Razor.Templating.Core;
@@ -33,6 +35,22 @@ namespace Dotented
             var builder = new DotentedBuilder(settings);
 
             return configure.Invoke(builder);
+        }
+
+        public static IHtmlContent ToHtml(this string markdown)
+        {
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .Build();
+                
+            var html = Markdown.ToHtml(markdown, pipeline);
+
+            if (string.IsNullOrWhiteSpace(html))
+            {
+                return null;
+            }
+
+            return new HtmlString(html);
         }
     }
 }

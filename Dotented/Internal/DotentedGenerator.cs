@@ -10,12 +10,11 @@ namespace Dotented.Internal
 {
     internal class DotentedGenerator : IDotentedGenerator
     {
-        private readonly DotentedContentFactory client;
+        private readonly DotentedContentfulClient client;
         private readonly DotentedBuilder builder;
         private readonly DotentedSettings settings;
-        private readonly string filename = "index.html";
 
-        public DotentedGenerator(DotentedContentFactory client, DotentedBuilder builder, DotentedSettings settings)
+        public DotentedGenerator(DotentedContentfulClient client, DotentedBuilder builder, DotentedSettings settings)
         {
             this.client = client;
             this.builder = builder;
@@ -42,28 +41,44 @@ namespace Dotented.Internal
 
         private async Task RenderToPage(DotentedOptions options, DotentedContent content) 
         {
-           var renderer = RazorViewToStringRendererFactory.CreateRenderer();
+            if (content == null)
+            {
+                return;
+            }
 
-           var html = await renderer.RenderViewToStringAsync($"~/Views/{options.View}.cshtml", content);
+            var html = await RazorTemplateEngine.RenderAsync($"~/Views/{options.View}.cshtml", content);
 
-           if (string.IsNullOrWhiteSpace(html))
-           {
-               return;
-           }
+            if (string.IsNullOrWhiteSpace(html))
+            {
+                return;
+            }
 
-           if (options.SingleOnly)
-           {
-               var path = GetPath();
-               await File.WriteAllTextAsync(Path.Combine(path, filename), html, Encoding.UTF8);
-           }
+            var filePath = GetPath(content);
+            await File.WriteAllTextAsync(filePath, html, Encoding.UTF8);
         }
 
-        private string GetPath()
+        private string GetPath(DotentedContent content)
         {
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
             UriBuilder uri = new UriBuilder(codeBase);
             string path = Uri.UnescapeDataString(uri.Path);
-            return Path.Combine(path, settings.OutputFolder);
+            path = Path.Combine(path, settings.OutputFolder);
+
+            if (string.IsNullOrEmpty(content.Url))
+            {
+                throw new Exception("To make a page, a Url property must be define don the content which has at least a filename e.g path/index.html or simply index.html");
+            }
+
+
+            path = Path.Combine(path, content.Url);
+            var directory = Path.GetDirectoryName(path);
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            return path.ToLower();
         }
     }
 }

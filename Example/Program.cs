@@ -15,12 +15,11 @@ namespace MySite
             {
                 return builder
                     .WithComponent<Asset>()
-                    .WithComponent<Skills>()
                     .WithComponent<Testimonial>()
+                    .WithComponent<Skills>()
                     .WithPage<Me>((options) => 
                     {
                         options.SingleOnly = true;
-                        options.Url = "/";
                     })
                     .Build();
             });

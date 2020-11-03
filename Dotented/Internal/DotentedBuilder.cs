@@ -24,7 +24,7 @@ namespace Dotented.Internal
             return this;
         }
 
-        public IDotentedBuilder WithPage<T>(Action<DotentedOptions> configure) where T : DotentedContent, new()
+        public IDotentedBuilder WithPage<T>(Action<DotentedOptions> configure = null) where T : DotentedContent, new()
         {
             var options = new DotentedOptions(typeof(T));
             configure?.Invoke(options);
@@ -41,7 +41,7 @@ namespace Dotented.Internal
 
         public IDotentedGenerator Build()
         {
-            return new DotentedGenerator(new DotentedContentFactory(new HttpClient(), settings, this), this, settings);
+            return new DotentedGenerator(new DotentedContentfulClient(new HttpClient(), settings, this), this, settings);
         }
     }
 }

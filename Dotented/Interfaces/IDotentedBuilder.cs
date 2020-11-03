@@ -11,7 +11,7 @@ namespace Dotented.Interfaces
 
         IDotentedBuilder WithComponent<T>() where T : DotentedContent, new();
 
-        IDotentedBuilder WithPage<T>(Action<DotentedOptions> configure) where T : DotentedContent, new();
+        IDotentedBuilder WithPage<T>(Action<DotentedOptions> configure = null) where T : DotentedContent, new();
 
         IDotentedGenerator Build();
     }

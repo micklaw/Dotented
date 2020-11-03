@@ -17,7 +17,5 @@ namespace Dotented.Interfaces
         public bool SingleOnly { get; set; }
 
         public string View { get; set; }
-
-        public string Url { get; set; }
     }
 }

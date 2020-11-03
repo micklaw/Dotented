@@ -7,13 +7,13 @@ using Newtonsoft.Json;
 
 namespace Dotented.Internal
 {
-    internal class DotentedContentFactory
+    internal class DotentedContentfulClient
     {
         private readonly DotentedSettings Settings;
         private readonly IDotentedBuilder Builder;
         private readonly HttpClient Client;
 
-        public DotentedContentFactory(HttpClient client, DotentedSettings settings, IDotentedBuilder builder)
+        public DotentedContentfulClient(HttpClient client, DotentedSettings settings, IDotentedBuilder builder)
         {
             Settings = settings;
             Builder = builder;

@@ -1,5 +1,3 @@
-using System;
-using Contentful.Core.Models;
 using Dotented;
 using Dotented.Interfaces;
 using MySite.Components;
@@ -12,7 +10,7 @@ namespace MySite.Pages
             query {
                 pages: meCollection(limit: 1) {
                     items {
-                        type: __typename
+                        __typename
                         aboutTitle
                         aboutLead
                         aboutBody
@@ -27,6 +25,7 @@ namespace MySite.Pages
                         githubUrl
                         linkedinUrl
                         name
+                        url
                         skillsTitle
                         testimonialTitle
                         toolsLead
@@ -38,24 +37,24 @@ namespace MySite.Pages
                         tools
                         companies: codedCompaniesCollection {
                             items {
-                                type: __typename
+                                __typename
                                 title
                                 url
                             }
                         }
                         profileImage {
-                            type: __typename
+                            __typename
                             title
                             url
                         }
                         testimonials: testimonialsCollection {
                             items {
-                                type: __typename
+                                __typename
                                 name
                                 company
                                 quote
                                 image {
-                                    type: __typename
+                                    __typename
                                     title
                                     url
                                 }
@@ -63,7 +62,7 @@ namespace MySite.Pages
                         }
                         skills: skillsCollection {
                             items {
-                                type: __typename
+                                __typename
                                 title
                                 icon
                                 details
