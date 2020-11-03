@@ -36,9 +36,8 @@ jobs:
     - name: Read local.settings.json
       id: package
       uses: juliangruber/read-file-action@v1
-      working-directory: Example
       with:
-        path: local.settings.json
+        path: Example/local.settings.json
     - name: Echo local.settings.json
       run: echo ${{ steps.package.outputs.content }}
     - name: Setup dotnet core
