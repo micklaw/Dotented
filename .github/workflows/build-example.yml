@@ -33,13 +33,6 @@ jobs:
         SPACEID: ${{ secrets.SPACEID }}
         ENVIRONMENTID: ${{ secrets.ENVIRONMENTID }}
         APIKEY: ${{ secrets.APIKEY }}
-    - name: Read local.settings.json
-      id: package
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: Example/local.settings.json
-    - name: Echo local.settings.json
-      run: echo ${{ steps.package.outputs.content }}
     - name: Setup dotnet core
       uses: actions/setup-dotnet@v1
       with:
