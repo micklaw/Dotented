@@ -29,7 +29,7 @@ Some steps on how to currently configure this east
 
 ### Installing
 
-TBD (Will be nuget though)
+<PackageReference Include="Dotented" Version="0.0.1" />
 
 ### Configuring
 
