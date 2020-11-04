@@ -28,5 +28,5 @@ jobs:
       working-directory: Dotented
       run: dotnet build --configuration Release --no-restore
     - name: Run dotnet publish
-      working-directory: Dotented
-      run: dotnet nuget push "*.nupkg" -k ${{ secrets.NUGETAPIKEY }} --skip-duplicate
+      working-directory: Dotented/bin/Release
+      run: dotnet nuget push "*.nupkg" -k ${{ secrets.NUGETAPIKEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
