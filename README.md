@@ -28,8 +28,7 @@ This is very much in the experimentl phase right now, so lots in flight. But the
 Some steps on how to currently configure this east
 
 ### Installing
-
-<PackageReference Include="Dotented" Version="0.0.1" />
+[![NuGet version (Dotented)](https://img.shields.io/nuget/v/Dotented.svg?style=flat-square)](https://www.nuget.org/packages/Dotented/)
 
 ### Configuring
 
