@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>Dotented</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Michael Law</Authors>
+    <Company>MLWD Ltd</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
