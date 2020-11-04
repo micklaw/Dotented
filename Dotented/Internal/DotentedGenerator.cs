@@ -70,7 +70,7 @@ namespace Dotented.Internal
             }
 
 
-            path = Path.Combine(path, content.Url);
+            path = Path.Combine(path, content.Url.ToLower());
             var directory = Path.GetDirectoryName(path);
 
             if (!Directory.Exists(directory))
