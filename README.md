@@ -1,4 +1,7 @@
 # Dotented, why?
+[![NuGet version (Dotented)](https://img.shields.io/nuget/v/Dotented.svg?style=flat-square)](https://www.nuget.org/packages/Dotented/)
+![Publish](https://github.com/micklaw/Dotented/workflows/Publish/badge.svg)
+
 I create static sites from time to time which I host in github pages. Its always a pain that users who manage them need a developer to make changes as they are non-technical. https://www.contentful.com/ is a CMS that can be delivered out the way via a GraphQL API, this way a developer can build content types in Contentful and also pages which deliver the json of a page outwards via the API. Dotented is a wrapper around the Contentful CMS for rendering HTML, where you can make POCOs for pages and components and also add Razor views which we can render the pages and components too.
 
 ## Your early
@@ -14,20 +17,18 @@ This is very much in the experimentl phase right now, so lots in flight. But the
 
 ### Things in flight
 
+- [x] Nuget package
+- [x] Environments (working based on config replacements in YAML)
 - [ ] Links in content managed automtically (right now they need manually managed)
-- [ ] Rich text rendering (MArkdown currently working)
-- [ ] Webhooks github action to build on change in Contentful
-- [ ] App versioning
-- [ ] Environments (only works on Contentful master based on config right now)
-- [ ] Nuget package
+- [ ] Rich text rendering (Markdown currently working)
+- [ ] Docs
 
 ## Setup
 
 Some steps on how to currently configure this east
 
 ### Installing
-
-TBD (Will be nuget though)
+[![NuGet version (Dotented)](https://img.shields.io/nuget/v/Dotented.svg?style=flat-square)](https://www.nuget.org/packages/Dotented/)
 
 ### Configuring
 
@@ -43,16 +44,7 @@ Create a console app, add some dependency injection to it and also a config file
   </PropertyGroup>
 
   <ItemGroup>
-      <None Update="local.settings.json">
-         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Dotented\Dotented.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Dotented" Version="0.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
   </ItemGroup>
