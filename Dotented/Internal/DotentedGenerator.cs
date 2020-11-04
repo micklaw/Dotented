@@ -78,7 +78,7 @@ namespace Dotented.Internal
                 Directory.CreateDirectory(directory);
             }
 
-            return path.ToLower();
+            return path;
         }
     }
 }
