@@ -121,7 +121,7 @@ namespace MySite.Pages
 }
 ```
 
-Once our models are setup we can configure it to run in out Program.cs. Here we add our IoC and bootsrap the configuration of our Models. Convention will find out where to looks for Views if you do not specify a view path for your type e.g "~/Views/{typeof(T).Name}.cshtml.
+Once our models are setup we can configure it to run in out Program.cs. Here we add our IoC and bootsrap the configuration of our Models. Convention will find out where to looks for Views e.g ~/Views/{typeof(T).Name}.cshtml but if you pupulate the View option for a type it will look in ~/Views/{options.View}.cshtml.
 
 ```csharp
 using System.Threading.Tasks;
@@ -146,6 +146,7 @@ namespace MySite
                     .WithPage<Me>((options) => 
                     {
                         options.SingleOnly = true;
+                        options.View = "AnotherMe" // 
                     })
                     .Build();
             });
