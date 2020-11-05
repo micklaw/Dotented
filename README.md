@@ -30,6 +30,9 @@ Some steps on how to currently configure this east
 ### Installing
 [![NuGet version (Dotented)](https://img.shields.io/nuget/v/Dotented.svg?style=flat-square)](https://www.nuget.org/packages/Dotented/)
 
+### Example app
+I have actually build my own site with this here, [micklaw/MLWD](https://github.com/micklaw/MLWD) so you can use that as reference to get it working. Works well for me and will give a good guide on how to configure your own site and rip off my YAML etc to configure it.
+
 ### Configuring
 
 Create a console app, add some dependency injection to it and also a config file to be copied to the output directory. We also need to change the Project type to be a Razor project so we can render the views, like so.
