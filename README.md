@@ -2,7 +2,7 @@
 [![NuGet version (Dotented)](https://img.shields.io/nuget/v/Dotented.svg?style=flat-square)](https://www.nuget.org/packages/Dotented/)
 ![Publish](https://github.com/micklaw/Dotented/workflows/Publish/badge.svg)
 
-I create static sites from time to time which I host in github pages. Its always a pain that users who manage them need a developer to make changes as they are non-technical. https://www.contentful.com/ is a CMS that can be delivered out the way via a GraphQL API, this way a developer can build content types in Contentful and also pages which deliver the json of a page outwards via the API. Dotented is a wrapper around the Contentful CMS for rendering HTML, where you can make POCOs for pages and components and also add Razor views which we can render the pages and components too.
+I create static sites from time to time which I host in github pages. Its always a pain that users who manage them need a developer to make changes as they are non-technical. https://www.contentful.com/ is a CMS that can be delivered out the way via a GraphQL API, this way a developer can build content types in Contentful and also pages which deliver the json of a page outwards via the API. Dotented is a wrapper around the Contentful CMS for rendering HTML, where you can make POCOs for pages and components and also add Razor views which we can render the pages and components too. I dont this as I feel the outputs of the gatsby Contentful process were bulky and not very clean, this gives me a much more stable, extensible and clean way to manage the markup.
 
 ## Your early
 This is very much in the experimentl phase right now, so lots in flight. But the long and short of it is this:
